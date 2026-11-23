@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อ30222 การอ่านภาษาอังกฤษเชิงวิจารณ์ - หน่วยที่ 2 Deepening Understanding</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Prompt & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2canvas for Screenshot feature -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Prompt', 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .en-text {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: white !important;
+                color: black !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .card-shadow {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+        }
+        /* Smooth transitions */
+        .tab-btn {
+            transition: all 0.2s ease;
+        }
+        .speak-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-blue-900 text-white shadow-lg sticky top-0 z-40 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-amber-400 text-indigo-950 p-2.5 rounded-xl font-bold text-xl shadow-md">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-bold leading-tight">การอ่านภาษาอังกฤษเชิงวิจารณ์ (อ30222)</h1>
+                        <p class="text-xs sm:text-sm text-indigo-200">หน่วยที่ 2: Deepening Understanding (ม.4) | ครูผู้สอน: นางสาวภิญญาพัชญ์ คบด่านกลาง</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="window.print()" class="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1.5 transition backdrop-blur-sm border border-white/20">
+                        <i class="fa-solid fa-print"></i> <span>พิมพ์เนื้อหา/แบบทดสอบ</span>
+                    </button>
+                    <button onclick="openTeacherModal()" class="bg-amber-400 hover:bg-amber-500 text-indigo-950 px-3.5 py-2 rounded-lg text-sm font-bold flex items-center gap-1.5 shadow-md transition">
+                        <i class="fa-solid fa-chalkboard-user"></i> <span>สำหรับครูผู้สอน</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Print Header (Visible only when printing) -->
+    <div class="hidden print-only p-6 border-b-2 border-gray-800 mb-6">
+        <h1 class="text-2xl font-bold">รายวิชา การอ่านภาษาอังกฤษเชิงวิจารณ์ (อ30222) ชั้นมัธยมศึกษาปีที่ 4</h1>
+        <p class="text-base">หน่วยการเรียนรู้ที่ 2: Deepening Understanding (เวลา 7 ชั่วโมง / น้ำหนัก 15 คะแนน)</p>
+        <p class="text-sm mt-1">ครูผู้สอน: นางสาวภิญญาพัชญ์ คบด่านกลาง</p>
+        <div class="mt-4 pt-3 border-t border-gray-400 flex gap-6 text-sm">
+            <span>ชื่อ-นามสกุล: ...................................................................</span>
+            <span>ชั้น ม.4/........</span>
+            <span>เลขที่: ............</span>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[68px] md:top-[64px] z-30 no-print">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto py-2 gap-1.5 sm:gap-2 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold bg-indigo-600 text-white shadow-sm">
+                    <i class="fa-solid fa-compass mr-1.5"></i>ภาพรวมหน่วยการเรียนรู้
+                </button>
+                <button onclick="switchTab('lessons')" id="tab-lessons" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-graduation-cap mr-1.5"></i>บทเรียน & ฝึกอ่านออกเสียง (4 ทักษะ)
+                </button>
+                <button onclick="switchTab('stories')" id="tab-stories" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-book-bookmark mr-1.5"></i>คลังบทอ่าน & วรรณกรรม
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-pen-to-square mr-1.5"></i>ทำแบบฝึกหัด & ทดสอบ (15 คะแนน)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="section-overview" class="space-y-6">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-br from-indigo-600 to-blue-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="inline-block bg-amber-400 text-indigo-950 text-xs font-bold px-3 py-1 rounded-full mb-3">
+                        ชั้นมัธยมศึกษาปีที่ 4 | เวลา 7 ชั่วโมง | คะแนนเต็ม 15 คะแนน
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-3">หน่วยที่ 2: Deepening Understanding</h2>
+                    <p class="text-indigo-100 text-sm sm:text-base leading-relaxed mb-6">
+                        ยกระดับทักษะการอ่านภาษาอังกฤษเชิงวิจารณ์ ผ่านการวิเคราะห์วรรณกรรมเยาวชนและเรื่องสั้นร่วมสมัย ฝึกเจาะลึกความหมายที่ซ่อนอยู่ เข้าใจโครงสร้างเรื่อง และตีความภาษาภาพพจน์อย่างมืออาชีพ
+                    </p>
+                    <div class="flex flex-wrap gap-3 no-print">
+                        <button onclick="switchTab('lessons')" class="bg-white text-indigo-700 hover:bg-indigo-50 font-bold px-5 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+                            <span>เริ่มเรียนเนื้อหา</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="switchTab('quiz')" class="bg-indigo-900/60 hover:bg-indigo-900 text-white border border-indigo-400/40 font-semibold px-5 py-2.5 rounded-xl transition flex items-center gap-2">
+                            <i class="fa-solid fa-file-signature"></i> <span>เข้าสู่หน้าทำแบบทดสอบ</span>
+                        </button>
+                    </div>
+                </div>
+                <i class="fa-solid fa-feather-pointed absolute -right-6 -bottom-6 text-[180px] text-white/10 rotate-12 pointer-events-none"></i>
+            </div>
+
+            <!-- 4 Core Skills Grid -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-indigo-600"></i> 4 ทักษะย่อยหลักประจำหน่วยการเรียนรู้
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-3">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 mb-1">1. Guessing Meaning from Context</h4>
+                        <p class="text-xs text-indigo-600 font-medium mb-2">การเดาความหมายจากบริบท</p>
+                        <p class="text-sm text-slate-600">ใช้เบาะแสในประโยค (Definition, Synonym, Antonym, Example) เพื่อเข้าใจคำศัพท์ยากโดยไม่ต้องเปิดพจนานุกรม</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-3">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 mb-1">2. Reference</h4>
+                        <p class="text-xs text-emerald-600 font-medium mb-2">การอ้างอิงข้อมูล</p>
+                        <p class="text-sm text-slate-600">ระบุความเชื่อมโยงของคำสรรพนาม (it, they, which, those) ว่ากล่าวถึงบุคคลหรือสิ่งใดก่อนหน้า</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-3">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 mb-1">3. Simile & Metaphor</h4>
+                        <p class="text-xs text-amber-600 font-medium mb-2">การตีความคำอุปมาอุปมัย</p>
+                        <p class="text-sm text-slate-600">แยกแยะความหมายตรง (Literal) และความหมายแฝง (Figurative) จากการเปรียบเทียบในวรรณกรรม</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-3">
+                            <i class="fa-solid fa-sitemap"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 mb-1">4. Story Elements</h4>
+                        <p class="text-xs text-purple-600 font-medium mb-2">องค์ประกอบของเรื่อง</p>
+                        <p class="text-sm text-slate-600">วิเคราะห์นิสัยตัวละคร (Character) ลำดับเหตุการณ์ (Plot Diagram) และแก่นเรื่อง (Theme)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson Plan Table -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-5 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-check text-indigo-600"></i> โครงสร้างแผนการจัดกิจกรรมการเรียนรู้ (7 ชั่วโมง / 15 คะแนน)
+                    </h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-indigo-50 text-indigo-950 border-b border-indigo-100">
+                                <th class="p-3.5 font-semibold w-24">ชั่วโมงที่</th>
+                                <th class="p-3.5 font-semibold">หัวข้อย่อย (Sub-topics)</th>
+                                <th class="p-3.5 font-semibold">เนื้อหาและกิจกรรมการเรียนรู้</th>
+                                <th class="p-3.5 font-semibold">สื่อ / บทอ่าน</th>
+                                <th class="p-3.5 font-semibold text-center w-32">คะแนน (15)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-indigo-600">ชั่วโมง 1</td>
+                                <td class="p-3.5 font-semibold">Context Clues & Reference</td>
+                                <td class="p-3.5 text-slate-600">ทบทวนเทคนิคเดาคำศัพท์จากบริบท และฝึกโยงคำอ้างอิง (Pronoun & Noun Reference)</td>
+                                <td class="p-3.5 text-slate-600">บทอ่านแนวเล่าเรื่อง (150-200 คำ)</td>
+                                <td class="p-3.5 text-center font-semibold text-emerald-600">2 คะแนน</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-indigo-600">ชั่วโมง 2</td>
+                                <td class="p-3.5 font-semibold">Simile & Metaphor</td>
+                                <td class="p-3.5 text-slate-600">แยกความหมายตรง/แฝง วิเคราะห์ Simile (like/as) และ Metaphor</td>
+                                <td class="p-3.5 text-slate-600">บทกวีสั้นๆ / ท่อนเพลงสากล</td>
+                                <td class="p-3.5 text-center font-semibold text-emerald-600">3 คะแนน</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-indigo-600">ชั่วโมง 3-4</td>
+                                <td class="p-3.5 font-semibold">Character, Plot & Theme</td>
+                                <td class="p-3.5 text-slate-600">วิเคราะห์ตัวละคร ลำดับโครงเรื่อง (Plot Diagram) และสกัดแก่นเรื่อง (Theme)</td>
+                                <td class="p-3.5 text-slate-600">All Summer in a Day (ฉบับย่อ)</td>
+                                <td class="p-3.5 text-center font-semibold text-emerald-600">4 คะแนน</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-indigo-600">ชั่วโมง 5-6</td>
+                                <td class="p-3.5 font-semibold">Critical Reading Workshop</td>
+                                <td class="p-3.5 text-slate-600">บูรณาการวิเคราะห์ครบทั้ง 4 ทักษะจากวรรณกรรมเรื่องสั้น</td>
+                                <td class="p-3.5 text-slate-600">The Gift of the Magi / The Giving Tree</td>
+                                <td class="p-3.5 text-center font-semibold text-emerald-600">4 คะแนน</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-indigo-600">ชั่วโมง 7</td>
+                                <td class="p-3.5 font-semibold">Unit Assessment</td>
+                                <td class="p-3.5 text-slate-600">ทดสอบวัดความเข้าใจการอ่านเชิงวิจารณ์จาก Unseen Passage</td>
+                                <td class="p-3.5 text-slate-600">แบบทดสอบท้ายหน่วยที่ 2</td>
+                                <td class="p-3.5 text-center font-semibold text-emerald-600">2 คะแนน</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: LESSONS & AUDIO PRACTICE ==================== -->
+        <section id="section-lessons" class="hidden space-y-6">
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 no-print">
+                <div class="flex items-center gap-3">
+                    <div class="bg-amber-400 text-amber-950 w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-amber-950 text-sm">ระบบฝึกฟังและออกเสียงภาษาอังกฤษ (Text-to-Speech)</h4>
+                        <p class="text-xs text-amber-800">นักเรียนสามารถกดปุ่มลำโพง <i class="fa-solid fa-volume-up"></i> ข้างคำศัพท์หรือประโยคตัวอย่างเพื่อฟังการออกเสียงที่ถูกต้องได้ทันที</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-medium text-amber-900">
+                    <span>ความเร็วเสียง:</span>
+                    <select id="speech-rate" class="bg-white border border-amber-300 rounded-lg px-2 py-1 focus:outline-none">
+                        <option value="0.75">ช้า (0.75x)</option>
+                        <option value="0.95" selected>ปกติ (0.95x)</option>
+                        <option value="1.15">เร็ว (1.15x)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Skill 1: Guessing Meaning from Context -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">Skill 1</span>
+                        <h3 class="text-xl font-bold text-slate-800 mt-1">การเดาความหมายจากบริบท (Guessing Meaning from Context)</h3>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    <strong>Context Clues</strong> คือ คำหรือข้อความแวดล้อมที่ช่วยให้เราเดาความหมายของคำศัพท์ที่ไม่รู้จักได้ แบ่งออกเป็น 4 เทคนิคหลัก ดังนี้:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Clue 1 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-blue-800 text-sm mb-1">1. Definition / Explanation (การให้คำจำกัดความ)</h4>
+                        <p class="text-xs text-slate-500 mb-2">สังเกตคำเชื่อม: <em>means, is, refers to, or, เครื่องหมายจุลภาค ( , )</em></p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "The volcano was <span class="text-blue-600 font-bold underline">dormant</span>, meaning it had not erupted for hundreds of years."
+                                </p>
+                                <button onclick="speakText('The volcano was dormant, meaning it had not erupted for hundreds of years.')" class="speak-btn bg-blue-100 hover:bg-blue-200 text-blue-700 p-2 rounded-lg shrink-0 no-print" title="ฟังเสียงประโยค">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <button onclick="speakText('dormant')" class="text-blue-600 hover:underline font-semibold flex items-center gap-1 no-print">
+                                    <i class="fa-solid fa-ear-listen"></i> ฟังคำว่า "dormant"
+                                </button>
+                                <span class="text-slate-500">→ แปลว่า <strong>สงบนิ่ง / ไม่ปะทุ</strong> (สังเกตจากคำว่า meaning...)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clue 2 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-blue-800 text-sm mb-1">2. Synonym / Restatement (คำที่มีความหมายเหมือนกัน)</h4>
+                        <p class="text-xs text-slate-500 mb-2">สังเกตคำเชื่อม: <em>in other words, like, similarly, and</em></p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "She felt completely <span class="text-blue-600 font-bold underline">exhausted</span>; in other words, she was extremely tired after the marathon."
+                                </p>
+                                <button onclick="speakText('She felt completely exhausted; in other words, she was extremely tired after the marathon.')" class="speak-btn bg-blue-100 hover:bg-blue-200 text-blue-700 p-2 rounded-lg shrink-0 no-print">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <button onclick="speakText('exhausted')" class="text-blue-600 hover:underline font-semibold flex items-center gap-1 no-print">
+                                    <i class="fa-solid fa-ear-listen"></i> ฟังคำว่า "exhausted"
+                                </button>
+                                <span class="text-slate-500">→ แปลว่า <strong>เหนื่อยล้าอย่างมาก</strong> (เทียบกับคำว่า extremely tired)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clue 3 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-blue-800 text-sm mb-1">3. Antonym / Contrast (คำที่มีความหมายตรงกันข้าม)</h4>
+                        <p class="text-xs text-slate-500 mb-2">สังเกตคำเชื่อม: <em>but, however, unlike, although, whereas</em></p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "Unlike his <span class="text-blue-600 font-bold underline">gregarious</span> sister who loves parties, Tom is very shy and quiet."
+                                </p>
+                                <button onclick="speakText('Unlike his gregarious sister who loves parties, Tom is very shy and quiet.')" class="speak-btn bg-blue-100 hover:bg-blue-200 text-blue-700 p-2 rounded-lg shrink-0 no-print">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <button onclick="speakText('gregarious')" class="text-blue-600 hover:underline font-semibold flex items-center gap-1 no-print">
+                                    <i class="fa-solid fa-ear-listen"></i> ฟังคำว่า "gregarious"
+                                </button>
+                                <span class="text-slate-500">→ แปลว่า <strong>ชอบเข้าสังคม</strong> (ตรงข้ามกับ shy and quiet)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clue 4 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-blue-800 text-sm mb-1">4. Example Clues (การยกตัวอย่างประกอบ)</h4>
+                        <p class="text-xs text-slate-500 mb-2">สังเกตคำเชื่อม: <em>such as, for example, for instance, including</em></p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "Celestial bodies, such as the sun, moon, and stars, have fascinated humans for centuries."
+                                </p>
+                                <button onclick="speakText('Celestial bodies, such as the sun, moon, and stars, have fascinated humans for centuries.')" class="speak-btn bg-blue-100 hover:bg-blue-200 text-blue-700 p-2 rounded-lg shrink-0 no-print">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-2 text-xs">
+                                <button onclick="speakText('Celestial bodies')" class="text-blue-600 hover:underline font-semibold flex items-center gap-1 no-print">
+                                    <i class="fa-solid fa-ear-listen"></i> ฟังคำว่า "Celestial bodies"
+                                </button>
+                                <span class="text-slate-500">→ แปลว่า <strong>เทห์ฟากฟ้า / ดวงดาวบนท้องฟ้า</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill 2: Reference -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">Skill 2</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-1">การอ้างอิงข้อมูล (Reference)</h3>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    ในการเขียนเรื่องเล่า ผู้เขียนมักใช้คำสรรพนาม (Pronouns) หรือคำชี้เฉพาะ เพื่อหลีกเลี่ยงการเขียนคำนามเดิมซ้ำๆ ผู้อ่านต้องย้อนกลับไปดูคำนามที่อยู่ก่อนหน้า (Antecedent) โดยพิจารณาจาก <strong>เพศ (Gender)</strong> และ <strong>พจน์ (เอกพจน์/พหูพจน์)</strong>
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-200 space-y-2">
+                        <div class="flex justify-between items-start gap-2">
+                            <p class="en-text text-sm text-slate-800">
+                                "Margot stood alone by the window. <span class="bg-emerald-200 text-emerald-950 font-bold px-1.5 rounded">She</span> remembered the warmth of the sun, while the other children laughed at <span class="bg-amber-200 text-amber-950 font-bold px-1.5 rounded">her</span>."
+                            </p>
+                            <button onclick="speakText('Margot stood alone by the window. She remembered the warmth of the sun, while the other children laughed at her.')" class="speak-btn bg-emerald-100 hover:bg-emerald-200 text-emerald-700 p-2 rounded-lg shrink-0 no-print">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-600">
+                            • <strong>She / her</strong> อ้างอิงถึง <strong>Margot</strong> (ผู้หญิงคนเดียว)
+                        </p>
+                    </div>
+
+                    <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-200 space-y-2">
+                        <div class="flex justify-between items-start gap-2">
+                            <p class="en-text text-sm text-slate-800">
+                                "Della sold her beautiful hair to buy a platinum chain. <span class="bg-emerald-200 text-emerald-950 font-bold px-1.5 rounded">It</span> was simple and chaste in design, worthy of Jim's gold watch."
+                            </p>
+                            <button onclick="speakText('Della sold her beautiful hair to buy a platinum chain. It was simple and chaste in design, worthy of Jims gold watch.')" class="speak-btn bg-emerald-100 hover:bg-emerald-200 text-emerald-700 p-2 rounded-lg shrink-0 no-print">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-600">
+                            • <strong>It</strong> อ้างอิงถึง <strong>a platinum chain</strong> (สายสร้อยแพลตตินัม - สิ่งของเอกพจน์)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill 3: Simile & Metaphor -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Skill 3</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-1">การตีความคำอุปมาอุปมัย (Figurative Language: Simile & Metaphor)</h3>
+                </div>
+                <p class="text-sm text-slate-600">
+                    การอ่านเชิงวิจารณ์ต้องแยกแยะระหว่าง <strong>ความหมายตรงตามตัวอักษร (Literal Meaning)</strong> และ <strong>ความหมายแฝงเชิงเปรียบเทียบ (Figurative Meaning)</strong>
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Simile -->
+                    <div class="border-2 border-amber-200 rounded-xl p-4 bg-amber-50/30 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-amber-900 text-base">1. Simile (อุปมา - เปรียบเทียบโดยใช้คำเชื่อม)</h4>
+                            <span class="text-xs bg-amber-200 text-amber-900 font-bold px-2 py-0.5 rounded">like / as</span>
+                        </div>
+                        <p class="text-xs text-slate-600">เปรียบเทียบสิ่งสองสิ่งที่แตกต่างกันว่า "เหมือนกับ" หรือ "ราวกับ" โดยมีคำว่า <strong>like</strong> หรือ <strong>as</strong> กำกับชัดเจน</p>
+                        
+                        <div class="bg-white p-3 rounded-lg border border-amber-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "The sun is <span class="text-amber-600 font-bold">like</span> a flower that blooms for just one hour."
+                                </p>
+                                <button onclick="speakText('The sun is like a flower that blooms for just one hour.')" class="speak-btn bg-amber-100 hover:bg-amber-200 text-amber-800 p-2 rounded-lg shrink-0 no-print">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-600"><strong>การตีความ:</strong> ดวงอาทิตย์บนดาวศุกร์ปรากฏให้เห็นเพียงช่วงเวลาสั้นๆ และงดงามล้ำค่าเหมือนดอกไม้ที่บานเพียงชั่วโมงเดียว</p>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-lg border border-amber-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "Her face was <span class="text-amber-600 font-bold">as</span> pale <span class="text-amber-600 font-bold">as</span> snow."
+                                </p>
+                                <button onclick="speakText('Her face was as pale as snow.')" class="speak-btn bg-amber-100 hover:bg-amber-200 text-amber-800 p-2 rounded-lg shrink-0 no-print">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-600"><strong>การตีความ:</strong> ใบหน้าของเธอซีดขาวมาก (บ่งบอกถึงความอ่อนแอหรือความตกใจ)</p>
+                        </div>
+                    </div>
+
+                    <!-- Metaphor -->
+                    <div class="border-2 border-indigo-200 rounded-xl p-4 bg-indigo-50/30 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-indigo-900 text-base">2. Metaphor (อุปลักษณ์ - เปรียบเทียบว่าเป็นสิ่งนั้นเลย)</h4>
+                            <span class="text-xs bg-indigo-200 text-indigo-900 font-bold px-2 py-0.5 rounded">ไม่มี like / as</span>
+                        </div>
+                        <p class="text-xs text-slate-600">การกล่าวว่าสิ่งหนึ่ง <strong>"เป็น" (is/was/are/were)</strong> อีกสิ่งหนึ่งโดยตรง เพื่อสร้างภาพพจน์และอารมณ์ที่ลึกซึ้ง</p>
+                        
+                        <div class="bg-white p-3 rounded-lg border border-indigo-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "Time <span class="text-indigo-600 font-bold">is</span> a thief that steals our youth."
+                                </p>
+                                <button onclick="speakText('Time is a thief that steals our youth.')" class="speak-btn bg-indigo-100 hover:bg-indigo-200 text-indigo-800 p-2 rounded-lg shrink-0 no-print">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-600"><strong>การตีความ:</strong> เวลาผ่านไปอย่างรวดเร็วโดยที่เราไม่ทันรู้ตัว และพรากความเยาว์วัยไปจากเราเหมือนขโมย</p>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-lg border border-indigo-200 space-y-2">
+                            <div class="flex justify-between items-start gap-2">
+                                <p class="en-text text-sm font-medium text-slate-800">
+                                    "The classroom <span class="text-indigo-600 font-bold">was</span> a zoo during the break."
+                                </p>
+                                <button onclick="speakText('The classroom was a zoo during the break.')" class="speak-btn bg-indigo-100 hover:bg-indigo-200 text-indigo-800 p-2 rounded-lg shrink-0 no-print">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-600"><strong>การตีความ:</strong> ห้องเรียนวุ่นวายและเสียงดังมากในช่วงพัก (ไม่ได้แปลว่ามีสัตว์จริงๆ)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill 4: Story Elements -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-2.5 py-1 rounded-md">Skill 4</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-1">การวิเคราะห์องค์ประกอบของเรื่อง (Character, Plot & Theme)</h3>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 mb-2"><i class="fa-solid fa-user-tag mr-1"></i> 1. Character (ตัวละคร)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            วิเคราะห์ลักษณะนิสัย (Character Traits) จาก <strong>คำพูด (Speech), ความคิด (Thoughts), การกระทำ (Actions)</strong> และปฏิกิริยาของผู้อื่นที่มีต่อตัวละคร เช่น <em>generous (ใจกว้าง), envious (ขี้อิจฉา), compassionate (มีความเห็นอกเห็นใจ)</em>
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 mb-2"><i class="fa-solid fa-chart-line mr-1"></i> 2. Plot Diagram (โครงเรื่อง 5 ขั้น)</h4>
+                        <ul class="text-xs text-slate-600 space-y-1">
+                            <li><strong>1. Exposition:</strong> เปิดเรื่อง แนะนำตัวละครและฉาก</li>
+                            <li><strong>2. Rising Action:</strong> ปมปัญหาเริ่มก่อตัวและทวีความตึงเครียด</li>
+                            <li><strong>3. Climax:</strong> จุดสูงสุด/จุดเปลี่ยนสำคัญของเรื่อง</li>
+                            <li><strong>4. Falling Action:</strong> เหตุการณ์คลี่คลายหลังจุด Climax</li>
+                            <li><strong>5. Resolution:</strong> บทสรุปและตอนจบของเรื่อง</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50/50 p-4 rounded-xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 mb-2"><i class="fa-solid fa-lightbulb mr-1"></i> 3. Theme (แก่นเรื่อง / ข้อคิด)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            คือ สารสำคัญหรือบทเรียนชีวิตที่ผู้เขียนต้องการสื่อถึงผู้อ่าน (ไม่ใช่แค่สรุปเรื่องย่อ) เช่น <em>"ความรักและการเสียสละมีค่ามากกว่าสิ่งของนอกกาย"</em> หรือ <em>"ความอิจฉานำมาซึ่งความโหดร้ายและการทำร้ายผู้อื่น"</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: READING MATERIALS ==================== -->
+        <section id="section-stories" class="hidden space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">คลังบทอ่านวรรณกรรมคัดย่อ (Reading Passages)</h2>
+                    <p class="text-sm text-slate-600">กดปุ่ม <strong>"ฟังเสียงอ่านทั้งเรื่อง"</strong> หรือกดที่คำศัพท์ไฮไลต์เพื่อฝึกฟังการออกเสียงและดูความหมาย</p>
+                </div>
+            </div>
+
+            <!-- Story Selector Buttons -->
+            <div class="flex flex-wrap gap-2 no-print">
+                <button onclick="selectStory('story1')" id="btn-story1" class="px-4 py-2.5 rounded-xl font-semibold text-sm bg-indigo-600 text-white shadow">
+                    เรื่องที่ 1: All Summer in a Day (Ray Bradbury)
+                </button>
+                <button onclick="selectStory('story2')" id="btn-story2" class="px-4 py-2.5 rounded-xl font-semibold text-sm bg-white text-slate-700 border border-slate-300 hover:bg-slate-50">
+                    เรื่องที่ 2: The Gift of the Magi (O. Henry)
+                </button>
+                <button onclick="selectStory('story3')" id="btn-story3" class="px-4 py-2.5 rounded-xl font-semibold text-sm bg-white text-slate-700 border border-slate-300 hover:bg-slate-50">
+                    เรื่องที่ 3: The Giving Tree (Adapted)
+                </button>
+            </div>
+
+            <!-- Story 1 Content -->
+            <div id="content-story1" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 border-b border-slate-200 pb-4">
+                    <div>
+                        <span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-full">Sci-Fi Short Story (ฉบับย่อสำหรับ ม.4)</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 en-text">All Summer in a Day</h3>
+                        <p class="text-xs text-slate-500">Adapted from Ray Bradbury | เหมาะสำหรับวิเคราะห์: Simile, Metaphor, Character & Bullying Theme</p>
+                    </div>
+                    <div class="flex gap-2 no-print">
+                        <button onclick="speakStory('text-story1')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-play"></i> <span>ฟังเสียงอ่านบทความ</span>
+                        </button>
+                        <button onclick="stopSpeech()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-3 py-2 rounded-xl text-sm font-semibold">
+                            <i class="fa-solid fa-stop"></i> หยุด
+                        </button>
+                    </div>
+                </div>
+
+                <div id="text-story1" class="en-text text-slate-800 text-base leading-relaxed space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <p>
+                        On the planet Venus, it had been raining for seven years. Thousands upon thousands of days compounded and filled from one end to the other with rain, with the drum and gush of water. It was a world of <span class="bg-amber-200 px-1 rounded font-semibold" title="ไม่หยุดหย่อน (Context clue: seven years)">incessant</span> storms where the sun only came out for one single hour every seven years.
+                    </p>
+                    <p>
+                        Margot was a frail girl who had come from Earth five years ago. Unlike the other nine-year-old children on Venus, <span class="bg-emerald-200 px-1 rounded font-semibold" title="Reference: Margot">she</span> remembered the sun. She wrote a poem about it: <em>"I think the sun is a flower, that blooms for just one hour."</em> She also said, <em>"It is like a penny,"</em> and <em>"It is like a fire in the stove."</em> The other children hated her because she had seen the sun and they had not. They were <span class="bg-amber-200 px-1 rounded font-semibold" title="อิจฉา / ริษยา">envious</span> of her memories.
+                    </p>
+                    <p>
+                        On the day the sun was predicted to appear, the teacher stepped out for a moment. Led by a boy named William, the children bullied Margot. "Nothing's happening today!" William shouted. Before she could protest, they seized her and locked her inside a dark closet.
+                    </p>
+                    <p>
+                        Minutes later, the rain stopped. The silence was immense. The door slid back, and the children rushed out into the blazing sunshine. The sun was the color of flaming bronze, and <span class="bg-emerald-200 px-1 rounded font-semibold" title="Reference: the sun">it</span> was very large. They laughed, ran, and soaked in the warmth like wild animals freed from cages. Then, a single drop of rain fell on a girl's palm. The sun faded, and the cold storm returned. Suddenly, one of the girls remembered Margot. They walked slowly back to the closet, their faces pale with <span class="bg-amber-200 px-1 rounded font-semibold" title="ความสำนึกผิด">remorse</span>, and unlocked the door to let her out into the dark, rainy world once more.
+                    </p>
+                </div>
+
+                <!-- Vocabulary & Analysis Box -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-200">
+                        <h4 class="font-bold text-blue-900 text-sm mb-2"><i class="fa-solid fa-spell-check mr-1"></i> คำศัพท์น่ารู้ (กดเพื่อฟังเสียง)</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Incessant</strong> (adj.) = ต่อเนื่องไม่หยุดหย่อน</span>
+                                <button onclick="speakText('incessant')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Envious</strong> (adj.) = อิจฉาริษยา</span>
+                                <button onclick="speakText('envious')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Remorse</strong> (n.) = ความรู้สึกสำนึกผิด</span>
+                                <button onclick="speakText('remorse')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50/70 p-4 rounded-xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 text-sm mb-2"><i class="fa-solid fa-magnifying-glass mr-1"></i> สรุปการวิเคราะห์เชิงวิจารณ์</h4>
+                        <ul class="space-y-1.5 text-xs text-slate-700">
+                            <li><strong>• Metaphor:</strong> "The sun is a flower" (เปรียบดวงอาทิตย์เป็นดอกไม้)</li>
+                            <li><strong>• Simile:</strong> "It is like a penny" / "like wild animals freed from cages"</li>
+                            <li><strong>• Climax:</strong> เด็กๆ ขัง Margot ไว้ในตู้เสื้อผ้าและออกไปเล่นกลางแสงแดดโดยลืมเธอ</li>
+                            <li><strong>• Theme:</strong> ผลร้ายของการกลั่นแกล้ง (Bullying) และความอิจฉาริษยาที่ทำให้คนขาดความเห็นอกเห็นใจ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Practice Exercise for Story 1 -->
+                <div class="mt-6 bg-indigo-50/60 border-2 border-indigo-200 rounded-2xl p-5 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-indigo-200 pb-3">
+                        <div>
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">แบบฝึกหัดท้ายบทอ่านที่ 1 (ครอบคลุม 4 ทักษะ)</span>
+                            <h4 class="text-base font-bold text-indigo-950 mt-1">ฝึกวิเคราะห์เรื่อง All Summer in a Day</h4>
+                        </div>
+                        <span id="s1-practice-score" class="text-sm font-bold text-indigo-700 bg-white px-3 py-1 rounded-full border border-indigo-200">คะแนนฝึกหัด: - / 4</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <!-- Skill 1: Context Clues -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">1. Context Clues</span>
+                            <p class="font-semibold text-slate-800">From the phrase <em>"it had been raining for seven years... a world of <span class="underline">incessant</span> storms"</em>, what does <strong>incessant</strong> mean?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q1" value="a"> A. Stopping frequently</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q1" value="b"> B. Continuing without stopping</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q1" value="c"> C. Very quiet and gentle</label>
+                            </div>
+                            <p id="s1_q1_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 2: Reference -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">2. Reference</span>
+                            <p class="font-semibold text-slate-800">In paragraph 4: <em>"The sun was the color of flaming bronze, and <span class="underline">it</span> was very large."</em> What does <strong>it</strong> refer to?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q2" value="a"> A. The closet door</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q2" value="b"> B. The rain</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q2" value="c"> C. The sun</label>
+                            </div>
+                            <p id="s1_q2_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 3: Simile & Metaphor -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">3. Simile & Metaphor</span>
+                            <p class="font-semibold text-slate-800">What figurative language is used in <em>"soaked in the warmth <strong>like</strong> wild animals freed from cages"</em>?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q3" value="a"> A. Simile (เปรียบเทียบโดยใช้คำว่า like)</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q3" value="b"> B. Metaphor (อุปลักษณ์เปรียบตรง)</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q3" value="c"> C. Literal meaning (ความหมายตรงตัว)</label>
+                            </div>
+                            <p id="s1_q3_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 4: Story Elements -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">4. Character, Plot & Theme</span>
+                            <p class="font-semibold text-slate-800">Why did the children feel <strong>remorse</strong> (pale faces) at the end of the story (Resolution)?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q4" value="a"> A. They were afraid of the teacher's punishment.</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q4" value="b"> B. They realized how cruel it was to lock Margot away from the sun.</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s1_q4" value="c"> C. They lost their toys in the rain.</label>
+                            </div>
+                            <p id="s1_q4_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end gap-2 no-print">
+                        <button type="button" onclick="resetStoryPractice('s1')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100">ล้างคำตอบ</button>
+                        <button type="button" onclick="checkStoryPractice('s1')" class="px-5 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow">ตรวจคำตอบบทอ่านที่ 1</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 2 Content -->
+            <div id="content-story2" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 border-b border-slate-200 pb-4">
+                    <div>
+                        <span class="text-xs font-bold bg-rose-100 text-rose-800 px-2.5 py-1 rounded-full">Classic Short Story (ฉบับย่อสำหรับ ม.4)</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 en-text">The Gift of the Magi</h3>
+                        <p class="text-xs text-slate-500">Adapted from O. Henry | เหมาะสำหรับวิเคราะห์: Irony (เรื่องหักมุม), Metaphor & Sacrifice Theme</p>
+                    </div>
+                    <div class="flex gap-2 no-print">
+                        <button onclick="speakStory('text-story2')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-play"></i> <span>ฟังเสียงอ่านบทความ</span>
+                        </button>
+                        <button onclick="stopSpeech()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-3 py-2 rounded-xl text-sm font-semibold">
+                            <i class="fa-solid fa-stop"></i> หยุด
+                        </button>
+                    </div>
+                </div>
+
+                <div id="text-story2" class="en-text text-slate-800 text-base leading-relaxed space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <p>
+                        One dollar and eighty-seven cents. That was all Della had saved to buy a Christmas present for her beloved husband, Jim. They were a young couple living in a <span class="bg-amber-200 px-1 rounded font-semibold">shabby</span> flat, yet their love for each other was a priceless treasure.
+                    </p>
+                    <p>
+                        There were two possessions in which Jim and Della took mighty pride. One was Jim's gold watch that had been his father's and his grandfather's. The other was Della's long, brown hair, which cascaded down her back like a waterfall of brown waters.
+                    </p>
+                    <p>
+                        Determined to buy a worthy gift, Della went to a hair shop and sold her beautiful hair for twenty dollars. With the money, she found a simple, elegant platinum fob chain for Jim's watch. When Jim came home and saw Della's short hair, he stared at her with a strange expression. He pulled a package from his coat—it contained a set of expensive tortoiseshell combs that Della had long <span class="bg-amber-200 px-1 rounded font-semibold">coveted</span> for her long hair.
+                    </p>
+                    <p>
+                        Della smiled through her tears and held out the platinum chain. Jim sat down and smiled gently. "Della," he said, "let's put our Christmas presents away for a while. I sold the watch to get the money to buy your combs." Though their gifts were temporarily useless, they realized that their selfless sacrifice made <span class="bg-emerald-200 px-1 rounded font-semibold">them</span> the wisest gift-givers of all.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-200">
+                        <h4 class="font-bold text-blue-900 text-sm mb-2"><i class="fa-solid fa-spell-check mr-1"></i> คำศัพท์น่ารู้ (กดเพื่อฟังเสียง)</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Shabby</strong> (adj.) = เก่าทรุดโทรม ซอมซ่อ</span>
+                                <button onclick="speakText('shabby')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Cascaded</strong> (v.) = ทิ้งตัวลงมาเหมือนน้ำตก</span>
+                                <button onclick="speakText('cascaded')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Coveted</strong> (v.) = ปรารถนาอย่างแรงกล้า</span>
+                                <button onclick="speakText('coveted')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50/70 p-4 rounded-xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 text-sm mb-2"><i class="fa-solid fa-magnifying-glass mr-1"></i> สรุปการวิเคราะห์เชิงวิจารณ์</h4>
+                        <ul class="space-y-1.5 text-xs text-slate-700">
+                            <li><strong>• Metaphor:</strong> "their love for each other was a priceless treasure"</li>
+                            <li><strong>• Simile:</strong> "cascaded down her back like a waterfall of brown waters"</li>
+                            <li><strong>• Reference:</strong> "made <em>them</em> the wisest..." → <em>them</em> หมายถึง Jim and Della</li>
+                            <li><strong>• Theme:</strong> ความรักและการเสียสละเพื่อคนที่เรารัก มีคุณค่าเหนือกว่าวัตถุสิ่งของ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Practice Exercise for Story 2 -->
+                <div class="mt-6 bg-rose-50/60 border-2 border-rose-200 rounded-2xl p-5 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-rose-200 pb-3">
+                        <div>
+                            <span class="bg-rose-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">แบบฝึกหัดท้ายบทอ่านที่ 2 (ครอบคลุม 4 ทักษะ)</span>
+                            <h4 class="text-base font-bold text-rose-950 mt-1">ฝึกวิเคราะห์เรื่อง The Gift of the Magi</h4>
+                        </div>
+                        <span id="s2-practice-score" class="text-sm font-bold text-rose-700 bg-white px-3 py-1 rounded-full border border-rose-200">คะแนนฝึกหัด: - / 4</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <!-- Skill 1: Context Clues -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">1. Context Clues</span>
+                            <p class="font-semibold text-slate-800">Based on <em>"One dollar and eighty-seven cents... living in a <span class="underline">shabby</span> flat"</em>, what does <strong>shabby</strong> mean?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q1" value="a"> A. Luxurious and modern</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q1" value="b"> B. Old and in poor condition</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q1" value="c"> C. Newly painted and spacious</label>
+                            </div>
+                            <p id="s2_q1_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 2: Reference -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">2. Reference</span>
+                            <p class="font-semibold text-slate-800">In paragraph 4: <em>"...their selfless sacrifice made <span class="underline">them</span> the wisest gift-givers of all."</em> Who does <strong>them</strong> refer to?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q2" value="a"> A. Jim and Della</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q2" value="b"> B. The tortoiseshell combs</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q2" value="c"> C. Jim's father and grandfather</label>
+                            </div>
+                            <p id="s2_q2_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 3: Simile & Metaphor -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">3. Simile & Metaphor</span>
+                            <p class="font-semibold text-slate-800">Identify the figure of speech in: <em>"their love for each other <strong>was</strong> a priceless treasure."</em></p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q3" value="a"> A. Simile</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q3" value="b"> B. Metaphor (เปรียบเทียบความรักเป็นสมบัติล้ำค่าโดยตรง)</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q3" value="c"> C. Antonym</label>
+                            </div>
+                            <p id="s2_q3_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 4: Story Elements -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">4. Character, Plot & Theme</span>
+                            <p class="font-semibold text-slate-800">Which character trait best describes both Jim and Della based on their actions?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q4" value="a"> A. Selfish and greedy</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q4" value="b"> B. Devoted and self-sacrificing (ทุ่มเทและเสียสละ)</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s2_q4" value="c"> C. Careless and angry</label>
+                            </div>
+                            <p id="s2_q4_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end gap-2 no-print">
+                        <button type="button" onclick="resetStoryPractice('s2')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100">ล้างคำตอบ</button>
+                        <button type="button" onclick="checkStoryPractice('s2')" class="px-5 py-2 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white shadow">ตรวจคำตอบบทอ่านที่ 2</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 3 Content -->
+            <div id="content-story3" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 border-b border-slate-200 pb-4">
+                    <div>
+                        <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">Modern Fable (ฉบับย่อสำหรับ ม.4)</span>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1 en-text">The Giving Tree</h3>
+                        <p class="text-xs text-slate-500">Adapted from Shel Silverstein | เหมาะสำหรับปูพื้นฐาน: Pronoun Reference, Character Traits & Theme</p>
+                    </div>
+                    <div class="flex gap-2 no-print">
+                        <button onclick="speakStory('text-story3')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-play"></i> <span>ฟังเสียงอ่านบทความ</span>
+                        </button>
+                        <button onclick="stopSpeech()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-3 py-2 rounded-xl text-sm font-semibold">
+                            <i class="fa-solid fa-stop"></i> หยุด
+                        </button>
+                    </div>
+                </div>
+
+                <div id="text-story3" class="en-text text-slate-800 text-base leading-relaxed space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <p>
+                        Once there was a great apple tree, and <span class="bg-emerald-200 px-1 rounded font-semibold">she</span> loved a little boy. Every day the boy would come to gather her leaves, swing from her branches, and eat her sweet apples. The tree was always <span class="bg-amber-200 px-1 rounded font-semibold">delighted</span> when the boy was near.
+                    </p>
+                    <p>
+                        Time went by, and the boy grew older. He rarely visited the tree. One day, he returned and said he needed money to buy things. "Take my apples and sell <span class="bg-emerald-200 px-1 rounded font-semibold">them</span> in the city," the tree offered joyfully. Years later, the man came back needing a house for his family, so the tree gave him her branches. Later still, he needed a boat to sail away, and she generously gave him her trunk.
+                    </p>
+                    <p>
+                        After many decades, an old, tired man returned. "I am sorry, Boy," sighed the tree, now just a bare <span class="bg-amber-200 px-1 rounded font-semibold">stump</span>. "I have nothing left to give you." "I don't need much now," replied the old man. "Just a quiet place to sit and rest." "Well," said the tree, straightening herself up as much as she could, "an old stump is good for sitting and resting. Come, sit down." And the boy did, and the tree was happy.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                    <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-200">
+                        <h4 class="font-bold text-blue-900 text-sm mb-2"><i class="fa-solid fa-spell-check mr-1"></i> คำศัพท์น่ารู้ (กดเพื่อฟังเสียง)</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Delighted</strong> (adj.) = ดีใจอย่างยิ่ง มีความสุขมาก</span>
+                                <button onclick="speakText('delighted')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                            <li class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                                <span><strong class="en-text text-blue-700">Stump</strong> (n.) = ตอไม้</span>
+                                <button onclick="speakText('stump')" class="text-blue-600 hover:text-blue-800 px-2 no-print"><i class="fa-solid fa-volume-high"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50/70 p-4 rounded-xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 text-sm mb-2"><i class="fa-solid fa-magnifying-glass mr-1"></i> สรุปการวิเคราะห์เชิงวิจารณ์</h4>
+                        <ul class="space-y-1.5 text-xs text-slate-700">
+                            <li><strong>• Character:</strong> ต้นไม้มีความเสียสละและรักอย่างไม่มีเงื่อนไข (Selfless / Unconditional love) ส่วนเด็กชายมักนึกถึงแต่ความต้องการของตนเอง</li>
+                            <li><strong>• Reference:</strong> "sell <em>them</em> in the city" → <em>them</em> อ้างอิงถึง <em>apples</em></li>
+                            <li><strong>• Theme:</strong> ความรักที่บริสุทธิ์และการให้โดยไม่หวังสิ่งตอบแทน (เปรียบเสมือนความรักของพ่อแม่)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Practice Exercise for Story 3 -->
+                <div class="mt-6 bg-emerald-50/60 border-2 border-emerald-200 rounded-2xl p-5 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-emerald-200 pb-3">
+                        <div>
+                            <span class="bg-emerald-600 text-white text-xs font-bold px-2.5 py-1 rounded-md">แบบฝึกหัดท้ายบทอ่านที่ 3 (ครอบคลุม 4 ทักษะ)</span>
+                            <h4 class="text-base font-bold text-emerald-950 mt-1">ฝึกวิเคราะห์เรื่อง The Giving Tree</h4>
+                        </div>
+                        <span id="s3-practice-score" class="text-sm font-bold text-emerald-700 bg-white px-3 py-1 rounded-full border border-emerald-200">คะแนนฝึกหัด: - / 4</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <!-- Skill 1: Context Clues -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">1. Context Clues</span>
+                            <p class="font-semibold text-slate-800">After giving away her apples, branches, and trunk, the tree was <em>"now just a bare <span class="underline">stump</span>... good for sitting and resting."</em> What is a <strong>stump</strong>?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q1" value="a"> A. The bottom part of a tree left after the trunk is cut</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q1" value="b"> B. A tall branch full of green leaves</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q1" value="c"> C. A wooden sailing boat</label>
+                            </div>
+                            <p id="s3_q1_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 2: Reference -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">2. Reference</span>
+                            <p class="font-semibold text-slate-800">In paragraph 2: <em>"Take my apples and sell <span class="underline">them</span> in the city."</em> What does <strong>them</strong> refer to?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q2" value="a"> A. The branches</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q2" value="b"> B. The apples</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q2" value="c"> C. The cities</label>
+                            </div>
+                            <p id="s3_q2_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 3: Simile & Metaphor -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">3. Figurative Meaning (Metaphor)</span>
+                            <p class="font-semibold text-slate-800">Figuratively, the Giving Tree is a <strong>Metaphor</strong> representing whom in real life?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q3" value="a"> A. A strict school teacher</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q3" value="b"> B. Selfless parents who give everything for their child</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q3" value="c"> C. A wealthy business owner</label>
+                            </div>
+                            <p id="s3_q3_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+
+                        <!-- Skill 4: Story Elements -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">4. Character, Plot & Theme</span>
+                            <p class="font-semibold text-slate-800">What is the <strong>Resolution</strong> (ending) of <em>The Giving Tree</em>?</p>
+                            <div class="space-y-1.5 en-text text-xs">
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q4" value="a"> A. The boy sails away on a boat and never returns.</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q4" value="b"> B. The old man rests on the tree's stump, and the tree is happy.</label>
+                                <label class="flex items-center gap-2 p-2 rounded border border-slate-200 cursor-pointer hover:bg-slate-50"><input type="radio" name="s3_q4" value="c"> C. The boy plants new apple seeds around the forest.</label>
+                            </div>
+                            <p id="s3_q4_fb" class="hidden text-xs p-2 rounded-lg font-medium"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end gap-2 no-print">
+                        <button type="button" onclick="resetStoryPractice('s3')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100">ล้างคำตอบ</button>
+                        <button type="button" onclick="checkStoryPractice('s3')" class="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow">ตรวจคำตอบบทอ่านที่ 3</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: INTERACTIVE QUIZ & ASSESSMENT ==================== -->
+        <section id="section-quiz" class="hidden space-y-6">
+            
+            <!-- Student Registration Form -->
+            <div class="bg-white rounded-2xl border-2 border-indigo-200 shadow-sm p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-user-pen"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">ข้อมูลนักเรียนผู้เข้าทำแบบฝึกหัด / แบบทดสอบ</h3>
+                        <p class="text-xs text-slate-500">กรุณากรอกข้อมูลให้ครบถ้วนก่อนส่งคำตอบ เพื่อให้ระบบบันทึกคะแนนส่งถึงครูภิญญาพัชญ์โดยอัตโนมัติ</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">ชื่อ - นามสกุล <span class="text-rose-500">*</span></label>
+                        <input type="text" id="student-name" placeholder="เช่น นายรักเรียน เพียรอ่าน" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">ชั้นมัธยมศึกษาปีที่ <span class="text-rose-500">*</span></label>
+                        <select id="student-class" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white">
+                            <option value="">-- เลือกห้องเรียน --</option>
+                            <option value="ม.4/1">ม.4/1</option>
+                            <option value="ม.4/2">ม.4/2</option>
+                            <option value="ม.4/3">ม.4/3</option>
+                            <option value="ม.4/4">ม.4/4</option>
+                            <option value="ม.4/5">ม.4/5</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">เลขที่ <span class="text-rose-500">*</span></label>
+                        <input type="number" id="student-number" min="1" max="60" placeholder="เช่น 15" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <form id="quiz-form" class="space-y-6">
+
+                <!-- PART 1: Multiple Choice (5 Points) -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+                    <div class="border-b border-slate-200 pb-3 flex justify-between items-center">
+                        <div>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-md">ตอนที่ 1 : แบบตัวเลือก (Multiple Choice)</span>
+                            <h4 class="text-lg font-bold text-slate-800 mt-1">เลือกคำตอบที่ถูกต้องที่สุดเพียงข้อเดียว (5 ข้อ / 5 คะแนน)</h4>
+                        </div>
+                    </div>
+
+                    <!-- Q1 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                        <div class="flex justify-between items-start gap-2">
+                            <p class="font-semibold text-slate-800 text-sm">
+                                1. Read the sentence: <span class="en-text text-indigo-900">"Unlike his <span class="underline font-bold">frugal</span> brother who saves every penny, Mark spends money recklessly."</span> What does <strong>frugal</strong> mean?
+                            </p>
+                            <button type="button" onclick="speakText('Unlike his frugal brother who saves every penny, Mark spends money recklessly.')" class="speak-btn text-indigo-600 hover:bg-indigo-100 p-2 rounded-lg shrink-0 no-print">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm en-text">
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q1" value="a" class="text-indigo-600"> A. Wasteful with money
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q1" value="b" class="text-indigo-600"> B. Careful and economical with money
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q1" value="c" class="text-indigo-600"> C. Extremely wealthy
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q1" value="d" class="text-indigo-600"> D. Generous to strangers
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                        <div class="flex justify-between items-start gap-2">
+                            <p class="font-semibold text-slate-800 text-sm">
+                                2. In <em>All Summer in a Day</em>: <span class="en-text text-indigo-900">"The children locked Margot in the closet because <span class="underline font-bold">they</span> did not believe her."</span> What does <strong>they</strong> refer to?
+                            </p>
+                            <button type="button" onclick="speakText('The children locked Margot in the closet because they did not believe her.')" class="speak-btn text-indigo-600 hover:bg-indigo-100 p-2 rounded-lg shrink-0 no-print">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm en-text">
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q2" value="a" class="text-indigo-600"> A. Margot and the teacher
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q2" value="b" class="text-indigo-600"> B. The children on Venus
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q2" value="c" class="text-indigo-600"> C. Margot's parents
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q2" value="d" class="text-indigo-600"> D. The closets
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                        <div class="flex justify-between items-start gap-2">
+                            <p class="font-semibold text-slate-800 text-sm">
+                                3. Which sentence is an example of a <strong>Metaphor</strong>?
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm en-text">
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q3" value="a" class="text-indigo-600"> A. He is as brave as a lion.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q3" value="b" class="text-indigo-600"> B. Her hair flowed like a waterfall.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q3" value="c" class="text-indigo-600"> C. Hope is a shining star in the dark.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q3" value="d" class="text-indigo-600"> D. The rain fell softly on the roof.
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                        <p class="font-semibold text-slate-800 text-sm">
+                            4. What is the <strong>Climax</strong> of <em>The Gift of the Magi</em>?
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm en-text">
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q4" value="a" class="text-indigo-600"> A. Della counts her $1.87 savings.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q4" value="b" class="text-indigo-600"> B. Jim and Della discover they both sold their treasures for each other's gifts.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q4" value="c" class="text-indigo-600"> C. Della walks down the street to the hair shop.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q4" value="d" class="text-indigo-600"> D. The narrator describes their small apartment.
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                        <p class="font-semibold text-slate-800 text-sm">
+                            5. What is the central <strong>Theme</strong> of <em>The Giving Tree</em>?
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm en-text">
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q5" value="a" class="text-indigo-600"> A. Cutting down trees is good for building boats.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q5" value="b" class="text-indigo-600"> B. Money brings true happiness in old age.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q5" value="c" class="text-indigo-600"> C. Unconditional love means giving selflessly without expecting anything in return.
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-indigo-400">
+                                <input type="radio" name="q5" value="d" class="text-indigo-600"> D. Apple trees live longer than human beings.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PART 2: True / False (4 Points) -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                    <div class="border-b border-slate-200 pb-3">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-md">ตอนที่ 2 : แบบถูกหรือผิด (True / False)</span>
+                        <h4 class="text-lg font-bold text-slate-800 mt-1">พิจารณาข้อความต่อไปนี้ว่า ถูก (True) หรือ ผิด (False) (4 ข้อ / 4 คะแนน)</h4>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                            <span class="en-text font-medium text-slate-800">6. A <strong>Simile</strong> compares two different things directly without using the words "like" or "as".</span>
+                            <div class="flex gap-3 shrink-0">
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-emerald-50"><input type="radio" name="q6" value="true"> True</label>
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-rose-50"><input type="radio" name="q6" value="false"> False</label>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                            <span class="en-text font-medium text-slate-800">7. Context clues such as "however" and "unlike" signal an <strong>Antonym (contrast)</strong> meaning.</span>
+                            <div class="flex gap-3 shrink-0">
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-emerald-50"><input type="radio" name="q7" value="true"> True</label>
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-rose-50"><input type="radio" name="q7" value="false"> False</label>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                            <span class="en-text font-medium text-slate-800">8. In <em>All Summer in a Day</em>, the sun shines on Venus every weekend for two days.</span>
+                            <div class="flex gap-3 shrink-0">
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-emerald-50"><input type="radio" name="q8" value="true"> True</label>
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-rose-50"><input type="radio" name="q8" value="false"> False</label>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                            <span class="en-text font-medium text-slate-800">9. Analyzing a character's actions and speech helps readers understand their personality traits.</span>
+                            <div class="flex gap-3 shrink-0">
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-emerald-50"><input type="radio" name="q9" value="true"> True</label>
+                                <label class="px-3 py-1.5 bg-white border border-slate-300 rounded-lg cursor-pointer hover:bg-rose-50"><input type="radio" name="q9" value="false"> False</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PART 3: Matching (3 Points) -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                    <div class="border-b border-slate-200 pb-3">
+                        <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md">ตอนที่ 3 : แบบจับคู่ (Matching)</span>
+                        <h4 class="text-lg font-bold text-slate-800 mt-1">จับคู่ข้อความทางซ้ายกับคำอธิบาย/เทคนิคที่ถูกต้องทางขวา (3 ข้อ / 3 คะแนน)</h4>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+                            <span class="en-text font-medium text-slate-800">10. "The snow is a white blanket covering the town."</span>
+                            <select name="q10" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                <option value="">-- เลือกคำตอบที่สัมพันธ์กัน --</option>
+                                <option value="simile">Simile (เปรียบเทียบโดยใช้ like/as)</option>
+                                <option value="metaphor">Metaphor (อุปลักษณ์เปรียบเทียบโดยตรง)</option>
+                                <option value="antonym">Antonym Context Clue (เบาะแสคำตรงข้าม)</option>
+                                <option value="resolution">Resolution (บทสรุปตอนจบของเรื่อง)</option>
+                            </select>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+                            <span class="en-text font-medium text-slate-800">11. "He ran as fast as lightning to catch the bus."</span>
+                            <select name="q11" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                <option value="">-- เลือกคำตอบที่สัมพันธ์กัน --</option>
+                                <option value="simile">Simile (เปรียบเทียบโดยใช้ like/as)</option>
+                                <option value="metaphor">Metaphor (อุปลักษณ์เปรียบเทียบโดยตรง)</option>
+                                <option value="antonym">Antonym Context Clue (เบาะแสคำตรงข้าม)</option>
+                                <option value="resolution">Resolution (บทสรุปตอนจบของเรื่อง)</option>
+                            </select>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+                            <span class="en-text font-medium text-slate-800">12. The final part of a story where the conflict is solved.</span>
+                            <select name="q12" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                <option value="">-- เลือกคำตอบที่สัมพันธ์กัน --</option>
+                                <option value="simile">Simile (เปรียบเทียบโดยใช้ like/as)</option>
+                                <option value="metaphor">Metaphor (อุปลักษณ์เปรียบเทียบโดยตรง)</option>
+                                <option value="antonym">Antonym Context Clue (เบาะแสคำตรงข้าม)</option>
+                                <option value="resolution">Resolution (บทสรุปตอนจบของเรื่อง)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PART 4: Fill in the Blanks (3 Points) -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                    <div class="border-b border-slate-200 pb-3">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-1 rounded-md">ตอนที่ 4 : แบบเติมคำ (Fill in the Blanks)</span>
+                        <h4 class="text-lg font-bold text-slate-800 mt-1">เลือกคำศัพท์ที่กำหนดให้เติมลงในช่องว่างให้สมบูรณ์ (3 ข้อ / 3 คะแนน)</h4>
+                    </div>
+
+                    <div class="bg-purple-50 p-3 rounded-xl border border-purple-200 text-center en-text text-sm font-bold text-purple-900">
+                        Word Bank: [ &nbsp;Theme&nbsp; | &nbsp;Reference&nbsp; | &nbsp;Context&nbsp; ]
+                    </div>
+
+                    <div class="space-y-3 text-sm en-text">
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                            13. When we don't know a difficult word, we can look at the surrounding words or 
+                            <input type="text" name="q13" placeholder="พิมพ์คำศัพท์..." class="mx-1 px-3 py-1 border-b-2 border-indigo-500 bg-white rounded font-semibold text-indigo-800 w-36 focus:outline-none">
+                            clues to guess its meaning.
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                            14. Identifying what a pronoun like "it" or "they" points back to is called pronoun 
+                            <input type="text" name="q14" placeholder="พิมพ์คำศัพท์..." class="mx-1 px-3 py-1 border-b-2 border-indigo-500 bg-white rounded font-semibold text-indigo-800 w-36 focus:outline-none">.
+                        </div>
+
+                        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                            15. The underlying message or life lesson that an author wants readers to learn from a story is the 
+                            <input type="text" name="q15" placeholder="พิมพ์คำศัพท์..." class="mx-1 px-3 py-1 border-b-2 border-indigo-500 bg-white rounded font-semibold text-indigo-800 w-36 focus:outline-none">.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2 no-print">
+                    <button type="button" onclick="submitQuiz()" id="btn-submit-quiz" class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>ส่งคำตอบและบันทึกคะแนน (เต็ม 15 คะแนน)</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Student Score Certificate Card (Shown after submission for Screenshot) -->
+            <div id="score-result-card" class="hidden max-w-2xl mx-auto">
+                <div id="capture-area" class="bg-gradient-to-br from-indigo-900 via-blue-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-amber-400 relative overflow-hidden">
+                    <div class="text-center space-y-2 relative z-10">
+                        <div class="inline-block bg-amber-400 text-indigo-950 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                            Official Score Report
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold">ผลการทดสอบหน่วยที่ 2: Deepening Understanding</h3>
+                        <p class="text-xs text-indigo-200">รายวิชา การอ่านภาษาอังกฤษเชิงวิจารณ์ (อ30222) | ครูภิญญาพัชญ์ คบด่านกลาง</p>
+                    </div>
+
+                    <div class="my-6 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 space-y-3 relative z-10">
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm">
+                            <span class="text-indigo-200">ชื่อ-นามสกุล:</span>
+                            <span id="res-name" class="font-bold text-white">-</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm">
+                            <span class="text-indigo-200">ชั้น / เลขที่:</span>
+                            <span id="res-class-no" class="font-bold text-white">-</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm">
+                            <span class="text-indigo-200">วันเวลาที่ส่งงาน:</span>
+                            <span id="res-timestamp" class="font-medium text-amber-300">-</span>
+                        </div>
+                        <div class="pt-2 text-center">
+                            <p class="text-xs text-indigo-200 uppercase">คะแนนรวมที่ได้</p>
+                            <div class="text-5xl font-extrabold text-amber-400 my-1">
+                                <span id="res-score">0</span> <span class="text-2xl text-white">/ 15</span>
+                            </div>
+                            <p id="res-status" class="text-xs text-emerald-300 font-medium mt-1">
+                                <i class="fa-solid fa-circle-check"></i> บันทึกคะแนนเข้าสู่ระบบของครูผู้สอนเรียบร้อยแล้ว
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="text-center text-xs text-indigo-300 relative z-10">
+                        * นักเรียนสามารถกดปุ่มด้านล่างเพื่อดาวน์โหลดภาพคะแนน หรือแคปหน้าจอนี้ส่งให้คุณครูได้ทันที
+                    </div>
+                </div>
+
+                <!-- Action Buttons for Screenshot / Retake -->
+                <div class="flex flex-wrap justify-center gap-3 mt-4 no-print">
+                    <button onclick="downloadScoreImage()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl shadow-md flex items-center gap-2 transition">
+                        <i class="fa-solid fa-camera"></i> <span>บันทึกรูปภาพคะแนน (แคปหน้าจออัตโนมัติ)</span>
+                    </button>
+                    <button onclick="resetQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold px-5 py-3 rounded-xl transition">
+                        <i class="fa-solid fa-rotate-right"></i> ทำแบบทดสอบอีกครั้ง
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Notification Toast / Modal -->
+    <div id="custom-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 animate-fade-in">
+            <div class="flex items-center gap-3">
+                <div id="modal-icon" class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <h3 id="modal-title" class="text-lg font-bold text-slate-800">แจ้งเตือน</h3>
+            </div>
+            <p id="modal-message" class="text-sm text-slate-600 leading-relaxed"></p>
+            <div class="flex justify-end">
+                <button onclick="closeCustomModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2 rounded-xl text-sm">
+                    ตกลง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Login & Dashboard Modal -->
+    <div id="teacher-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm hidden items-center justify-center z-50 p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-5xl w-full shadow-2xl overflow-hidden my-auto border border-slate-200">
+            
+            <!-- Modal Header -->
+            <div class="bg-indigo-950 text-white px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-user-shield text-amber-400 text-xl"></i>
+                    <div>
+                        <h3 class="font-bold text-lg">ระบบจัดการสำหรับครูผู้สอน</h3>
+                        <p class="text-xs text-indigo-300">นางสาวภิญญาพัชญ์ คบด่านกลาง | รายวิชา อ30222</p>
+                    </div>
+                </div>
+                <button onclick="closeTeacherModal()" class="text-slate-300 hover:text-white text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Password Gate -->
+            <div id="teacher-login-view" class="p-8 max-w-md mx-auto text-center space-y-4">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-700 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-800">ยืนยันตัวตนครูผู้สอน</h4>
+                <p class="text-sm text-slate-500">กรุณากรอกรหัสผ่านเพื่อเข้าดูคะแนนนักเรียนแบบ Real-time และเฉลยข้อสอบ</p>
+                <input type="password" id="teacher-password-input" placeholder="กรอกรหัสผ่าน..." onkeypress="if(event.key==='Enter') verifyTeacherPassword()" class="w-full px-4 py-3 text-center text-lg tracking-widest rounded-xl border-2 border-slate-300 focus:border-indigo-600 outline-none">
+                <p id="teacher-login-error" class="text-xs text-rose-600 font-semibold hidden">รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</p>
+                <button onclick="verifyTeacherPassword()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow transition">
+                    เข้าสู่ระบบครูผู้สอน
+                </button>
+            </div>
+
+            <!-- Teacher Dashboard Content (Unlocked) -->
+            <div id="teacher-dashboard-view" class="hidden p-6 space-y-6 max-h-[80vh] overflow-y-auto">
+                
+                <!-- Sub-navigation inside Teacher Dashboard -->
+                <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-200 pb-4">
+                    <div class="flex gap-2">
+                        <button onclick="switchTeacherSubTab('scores')" id="t-tab-scores" class="px-4 py-2 rounded-xl text-sm font-bold bg-indigo-600 text-white">
+                            <i class="fa-solid fa-table-list mr-1.5"></i> คะแนนนักเรียน Real-time (<span id="total-submissions">0</span>)
+                        </button>
+                        <button onclick="switchTeacherSubTab('answers')" id="t-tab-answers" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200">
+                            <i class="fa-solid fa-key mr-1.5"></i> เฉลยแบบทดสอบทั้งหมด
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-100 px-3 py-1.5 rounded-full">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Live Sync Active
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Sub-tab 1: Real-time Student Scores -->
+                <div id="t-view-scores" class="space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div class="flex items-center gap-2">
+                            <label class="text-sm font-semibold text-slate-700">กรองตามห้องเรียน:</label>
+                            <select id="filter-class" onchange="renderStudentTable()" class="px-3 py-1.5 rounded-lg border border-slate-300 text-sm bg-white">
+                                <option value="ALL">ทั้งหมด (ม.4/1 - ม.4/5)</option>
+                                <option value="ม.4/1">ม.4/1</option>
+                                <option value="ม.4/2">ม.4/2</option>
+                                <option value="ม.4/3">ม.4/3</option>
+                                <option value="ม.4/4">ม.4/4</option>
+                                <option value="ม.4/5">ม.4/5</option>
+                            </select>
+                        </div>
+                        <button onclick="exportScoresCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-file-excel"></i> ดาวน์โหลดไฟล์คะแนน (.CSV)
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                                    <th class="p-3 font-bold">ชั้น</th>
+                                    <th class="p-3 font-bold">เลขที่</th>
+                                    <th class="p-3 font-bold">ชื่อ - นามสกุล</th>
+                                    <th class="p-3 font-bold text-center">คะแนน (15)</th>
+                                    <th class="p-3 font-bold">เวลาที่ส่ง</th>
+                                    <th class="p-3 font-bold text-center">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teacher-scores-tbody" class="divide-y divide-slate-200">
+                                <tr>
+                                    <td colspan="6" class="p-8 text-center text-slate-400">กำลังโหลดข้อมูลคะแนนแบบ Real-time...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sub-tab 2: Answer Key -->
+                <div id="t-view-answers" class="hidden space-y-4">
+                    <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl text-sm text-amber-900 font-medium">
+                        <i class="fa-solid fa-circle-info mr-1"></i> เฉลยแบบฝึกหัดและแบบทดสอบหน่วยที่ 2 (คะแนนเต็ม 15 คะแนน)
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                            <h5 class="font-bold text-indigo-800 border-b pb-1">ตอนที่ 1 : ตัวเลือก (5 คะแนน)</h5>
+                            <p><strong>ข้อ 1:</strong> B. Careful and economical with money (คำว่า Unlike บอกความตรงข้ามกับ spends recklessly)</p>
+                            <p><strong>ข้อ 2:</strong> B. The children on Venus</p>
+                            <p><strong>ข้อ 3:</strong> C. Hope is a shining star in the dark. (Metaphor ไม่มี like/as)</p>
+                            <p><strong>ข้อ 4:</strong> B. Jim and Della discover they both sold their treasures...</p>
+                            <p><strong>ข้อ 5:</strong> C. Unconditional love means giving selflessly...</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                            <h5 class="font-bold text-emerald-800 border-b pb-1">ตอนที่ 2 : ถูก / ผิด (4 คะแนน)</h5>
+                            <p><strong>ข้อ 6:</strong> False (Simile ต้องใช้คำว่า like หรือ as)</p>
+                            <p><strong>ข้อ 7:</strong> True (however / unlike ใช้บอกความขัดแย้งตรงข้าม)</p>
+                            <p><strong>ข้อ 8:</strong> False (ดวงอาทิตย์ขึ้นเพียง 1 ชั่วโมง ในทุกๆ 7 ปี)</p>
+                            <p><strong>ข้อ 9:</strong> True</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                            <h5 class="font-bold text-amber-800 border-b pb-1">ตอนที่ 3 : จับคู่ (3 คะแนน)</h5>
+                            <p><strong>ข้อ 10:</strong> Metaphor (เปรียบเทียบหิมะเป็นผ้าห่มสีขาวโดยตรง)</p>
+                            <p><strong>ข้อ 11:</strong> Simile (เปรียบเทียบโดยใช้คำว่า as ... as)</p>
+                            <p><strong>ข้อ 12:</strong> Resolution (บทสรุปตอนจบของเรื่อง)</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                            <h5 class="font-bold text-purple-800 border-b pb-1">ตอนที่ 4 : เติมคำ (3 คะแนน)</h5>
+                            <p><strong>ข้อ 13:</strong> Context</p>
+                            <p><strong>ข้อ 14:</strong> Reference</p>
+                            <p><strong>ข้อ 15:</strong> Theme</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 mt-12 text-center text-xs no-print">
+        <div class="max-w-7xl mx-auto px-4 space-y-1">
+            <p class="text-white font-semibold">สื่อการเรียนรู้เชิงโต้ตอบ รายวิชา การอ่านภาษาอังกฤษเชิงวิจารณ์ (อ30222) ชั้นมัธยมศึกษาปีที่ 4</p>
+            <p>พัฒนาและจัดการเรียนการสอนโดย ครูภิญญาพัชญ์ คบด่านกลาง</p>
+        </div>
+    </footer>
+
+    <!-- Firebase & Application Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global State
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+        let allStudentScores = [];
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'critical-reading-m4-unit2';
+
+        // Initialize Firebase for Real-time Scoreboard
+        async function initFirebase() {
+            try {
+                if (typeof __firebase_config !== 'undefined') {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        const cred = await signInWithCustomToken(auth, __initial_auth_token);
+                        currentUser = cred.user;
+                    } else {
+                        const cred = await signInAnonymously(auth);
+                        currentUser = cred.user;
+                    }
+
+                    setupRealtimeListener();
+                } else {
+                    console.warn("Firebase config not found. Running in local fallback mode.");
+                }
+            } catch (error) {
+                console.error("Firebase initialization error:", error);
+            }
+        }
+
+        // Setup Real-time Listener (Strictly following Rule 1 & Rule 2)
+        function setupRealtimeListener() {
+            if (!db || !currentUser) return;
+            const scoresRef = collection(db, 'artifacts', appId, 'public', 'data', 'student_scores');
+            
+            onSnapshot(scoresRef, (snapshot) => {
+                const records = [];
+                snapshot.forEach((docSnap) => {
+                    records.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                // Sort in JavaScript memory (newest first)
+                records.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                allStudentScores = records;
+                window.renderStudentTable();
+            }, (error) => {
+                console.error("Error listening to scores:", error);
+            });
+        }
+
+        // Save Score to Firestore
+        window.saveScoreToCloud = async function(scoreData) {
+            if (!db || !currentUser) {
+                // Fallback in memory if offline
+                allStudentScores.unshift({ id: Date.now().toString(), ...scoreData });
+                window.renderStudentTable();
+                return true;
+            }
+            try {
+                const scoresRef = collection(db, 'artifacts', appId, 'public', 'data', 'student_scores');
+                await addDoc(scoresRef, scoreData);
+                return true;
+            } catch (err) {
+                console.error("Error saving score:", err);
+                return false;
+            }
+        };
+
+        // Delete Score Record (Teacher Action)
+        window.deleteScoreRecord = async function(docId) {
+            if (!db || !currentUser) return;
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'student_scores', docId);
+                await deleteDoc(docRef);
+            } catch (err) {
+                console.error("Delete failed:", err);
+            }
+        };
+
+        // Render Teacher Table
+        window.renderStudentTable = function() {
+            const tbody = document.getElementById('teacher-scores-tbody');
+            const filterClass = document.getElementById('filter-class').value;
+            const totalBadge = document.getElementById('total-submissions');
+
+            const filtered = filterClass === 'ALL' 
+                ? allStudentScores 
+                : allStudentScores.filter(item => item.studentClass === filterClass);
+
+            totalBadge.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400">ยังไม่มีข้อมูลการส่งคะแนนในหมวดหมู่นี้</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(item => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3 font-semibold text-indigo-700">${escapeHtml(item.studentClass)}</td>
+                    <td class="p-3 font-medium">${escapeHtml(String(item.studentNumber))}</td>
+                    <td class="p-3 font-semibold text-slate-800">${escapeHtml(item.studentName)}</td>
+                    <td class="p-3 text-center">
+                        <span class="inline-block px-3 py-1 rounded-full font-bold text-xs ${item.score >= 10 ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                            ${item.score} / 15
+                        </span>
+                    </td>
+                    <td class="p-3 text-xs text-slate-500">${escapeHtml(item.timestamp)}</td>
+                    <td class="p-3 text-center">
+                        <button onclick="deleteScoreRecord('${item.id}')" class="text-rose-500 hover:text-rose-700 p-1" title="ลบรายการนี้">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        };
+
+        // Export CSV for Teacher
+        window.exportScoresCSV = function() {
+            if (allStudentScores.length === 0) {
+                window.showCustomModal("ไม่มีข้อมูล", "ยังไม่มีคะแนนนักเรียนสำหรับส่งออกไฟล์");
+                return;
+            }
+            let csvContent = "\uFEFFชั้น,เลขที่,ชื่อ-นามสกุล,คะแนนที่ได้,คะแนนเต็ม,วันเวลาที่ส่ง\n";
+            allStudentScores.forEach(r => {
+                csvContent += `"${r.studentClass}","${r.studentNumber}","${r.studentName}",${r.score},15,"${r.timestamp}"\n`;
+            });
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `คะแนน_อ30222_หน่วยที่2_${new Date().toLocaleDateString('th-TH')}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Start Firebase on load
+        initFirebase();
+    </script>
+
+    <!-- Standard UI & Interactive Functions -->
+    <script>
+        // Tab Switching
+        function switchTab(tabName) {
+            const sections = ['overview', 'lessons', 'stories', 'quiz'];
+            sections.forEach(sec => {
+                document.getElementById(`section-${sec}`).classList.add('hidden');
+                const btn = document.getElementById(`tab-${sec}`);
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+            });
+
+            document.getElementById(`section-${tabName}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+            activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Story Switching
+        function selectStory(storyId) {
+            ['story1', 'story2', 'story3'].forEach(id => {
+                document.getElementById(`content-${id}`).classList.add('hidden');
+                const btn = document.getElementById(`btn-${id}`);
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+            });
+
+            document.getElementById(`content-${storyId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${storyId}`);
+            activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow');
+            activeBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+            stopSpeech();
+        }
+
+        // Text-to-Speech (TTS) Engine
+        function speakText(text) {
+            if (!('speechSynthesis' in window)) {
+                showCustomModal("ไม่รองรับเสียงอ่าน", "เบราว์เซอร์ของคุณไม่รองรับระบบอ่านออกเสียงอัตโนมัติ");
+                return;
+            }
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            const rateEl = document.getElementById('speech-rate');
+            utterance.rate = rateEl ? parseFloat(rateEl.value) : 0.95;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function speakStory(elementId) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            speakText(el.innerText);
+        }
+
+        function stopSpeech() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+
+        // Story Practice Exercises Logic (4 Skills per Story)
+        const storyPracticeBank = {
+            s1: {
+                q1: { ans: 'b', exp: 'ถูกต้อง! คำว่า "raining for seven years" เป็นบริบทบ่งบอกว่าพายุตกต่อเนื่องไม่หยุดหย่อน (Continuing without stopping)' },
+                q2: { ans: 'c', exp: 'ถูกต้อง! สรรพนาม "it" ในประโยคนี้กล่าวถึง "The sun" ที่อยู่ข้างหน้า' },
+                q3: { ans: 'a', exp: 'ถูกต้อง! มีคำเชื่อม "like" เปรียบเทียบเด็กๆ กับสัตว์ป่าที่ถูกปล่อยออกจากกรง จึงเป็น Simile' },
+                q4: { ans: 'b', exp: 'ถูกต้อง! เด็กๆ รู้สึกสำนึกผิด (remorse) เมื่อรู้ซึ้งถึงความโหดร้ายที่ขัง Margot ไว้จนอดเห็นแสงอาทิตย์' }
+            },
+            s2: {
+                q1: { ans: 'b', exp: 'ถูกต้อง! จากบริบทที่มีเงินเก็บเพียง 1.87 ดอลลาร์ บอกถึงฐานะยากจน ห้องพักจึงมีสภาพเก่าซอมซ่อ (Old and in poor condition)' },
+                q2: { ans: 'a', exp: 'ถูกต้อง! "them" อ้างอิงถึงคนทั้งสองคือ Jim and Della' },
+                q3: { ans: 'b', exp: 'ถูกต้อง! ใช้คำว่า "was" เปรียบเทียบความรักว่าเป็นสมบัติล้ำค่าโดยตรง (ไม่มี like/as) จึงเป็น Metaphor' },
+                q4: { ans: 'b', exp: 'ถูกต้อง! ทั้งคู่ยอมเสียสละของรักที่สุดเพื่อซื้อของขวัญให้อีกฝ่าย แสดงถึงความทุ่มเทและเสียสละ (Devoted and self-sacrificing)' }
+            },
+            s3: {
+                q1: { ans: 'a', exp: 'ถูกต้อง! เมื่อตัดลำต้น (trunk) ไปทำเรือแล้ว ส่วนที่เหลือติดพื้นดินไว้นั่งพักได้คือ ตอไม้ (stump)' },
+                q2: { ans: 'b', exp: 'ถูกต้อง! "them" เป็นสรรพนามพหูพจน์ อ้างอิงถึง "apples" ที่กล่าวถึงก่อนหน้า' },
+                q3: { ans: 'b', exp: 'ถูกต้อง! ต้นไม้เปรียบเสมือนพ่อแม่ที่ยอมเสียสละทุกอย่างให้ลูกโดยไม่หวังสิ่งตอบแทน' },
+                q4: { ans: 'b', exp: 'ถูกต้อง! ตอนจบของเรื่อง (Resolution) ชายชรากลับมานั่งพักบนตอไม้ และต้นไม้ก็มีความสุขที่ได้เป็นผู้ให้อีกครั้ง' }
+            }
+        };
+
+        function checkStoryPractice(storyKey) {
+            const bank = storyPracticeBank[storyKey];
+            let score = 0;
+            let allAnswered = true;
+
+            for (let i = 1; i <= 4; i++) {
+                const selected = document.querySelector(`input[name="${storyKey}_q${i}"]:checked`);
+                if (!selected) {
+                    allAnswered = false;
+                }
+            }
+
+            if (!allAnswered) {
+                showCustomModal("ยังตอบไม่ครบ", "กรุณาเลือกคำตอบให้ครบทั้ง 4 ข้อในแบบฝึกหัดท้ายบทอ่านก่อนกดตรวจคำตอบครับ");
+                return;
+            }
+
+            for (let i = 1; i <= 4; i++) {
+                const selected = document.querySelector(`input[name="${storyKey}_q${i}"]:checked`);
+                const fbEl = document.getElementById(`${storyKey}_q${i}_fb`);
+                const isCorrect = selected.value === bank[`q${i}`].ans;
+
+                fbEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+                if (isCorrect) {
+                    score++;
+                    fbEl.classList.add('bg-emerald-100', 'text-emerald-800');
+                    fbEl.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> ${bank[`q${i}`].exp}`;
+                } else {
+                    fbEl.classList.add('bg-rose-100', 'text-rose-800');
+                    fbEl.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> ยังไม่ถูกครับ — ${bank[`q${i}`].exp.replace('ถูกต้อง! ', '')}`;
+                }
+            }
+
+            document.getElementById(`${storyKey}-practice-score`).textContent = `คะแนนฝึกหัด: ${score} / 4`;
+        }
+
+        function resetStoryPractice(storyKey) {
+            for (let i = 1; i <= 4; i++) {
+                const radios = document.querySelectorAll(`input[name="${storyKey}_q${i}"]`);
+                radios.forEach(r => r.checked = false);
+                const fbEl = document.getElementById(`${storyKey}_q${i}_fb`);
+                fbEl.classList.add('hidden');
+            }
+            document.getElementById(`${storyKey}-practice-score`).textContent = `คะแนนฝึกหัด: - / 4`;
+        }
+
+        // Quiz Grading & Submission
+        async function submitQuiz() {
+            const name = document.getElementById('student-name').value.trim();
+            const studentClass = document.getElementById('student-class').value;
+            const studentNumber = document.getElementById('student-number').value.trim();
+
+            if (!name || !studentClass || !studentNumber) {
+                showCustomModal("ข้อมูลไม่ครบถ้วน", "กรุณากรอก ชื่อ-นามสกุล เลือกชั้นเรียน (ม.4/1 - ม.4/5) และกรอกเลขที่ให้ครบถ้วนก่อนส่งคำตอบครับ");
+                return;
+            }
+
+            const form = document.getElementById('quiz-form');
+            const formData = new FormData(form);
+
+            // Answer Key
+            const answers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'c',
+                q4: 'b',
+                q5: 'c',
+                q6: 'false',
+                q7: 'true',
+                q8: 'false',
+                q9: 'true',
+                q10: 'metaphor',
+                q11: 'simile',
+                q12: 'resolution',
+                q13: 'context',
+                q14: 'reference',
+                q15: 'theme'
+            };
+
+            // Check if all questions answered
+            for (let i = 1; i <= 15; i++) {
+                const val = formData.get(`q${i}`);
+                if (!val || val.trim() === '') {
+                    showCustomModal("ยังทำแบบทดสอบไม่ครบ", `กรุณาตอบคำถามข้อที่ ${i} ให้เรียบร้อยก่อนกดส่งคำตอบครับ`);
+                    return;
+                }
+            }
+
+            let score = 0;
+            for (let i = 1; i <= 15; i++) {
+                const userAns = formData.get(`q${i}`).trim().toLowerCase();
+                if (userAns === answers[`q${i}`]) {
+                    score++;
+                }
+            }
+
+            const now = new Date();
+            const timestamp = now.toLocaleString('th-TH', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            const btnSubmit = document.getElementById('btn-submit-quiz');
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> กำลังบันทึกคะแนน...`;
+
+            const record = {
+                studentName: name,
+                studentClass: studentClass,
+                studentNumber: parseInt(studentNumber, 10),
+                score: score,
+                timestamp: timestamp,
+                createdAt: Date.now()
+            };
+
+            await window.saveScoreToCloud(record);
+
+            // Display Result Card
+            document.getElementById('res-name').textContent = name;
+            document.getElementById('res-class-no').textContent = `${studentClass} เลขที่ ${studentNumber}`;
+            document.getElementById('res-timestamp').textContent = timestamp;
+            document.getElementById('res-score').textContent = score;
+
+            form.classList.add('hidden');
+            const resultCard = document.getElementById('score-result-card');
+            resultCard.classList.remove('hidden');
+            resultCard.scrollIntoView({ behavior: 'smooth' });
+
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span>ส่งคำตอบและบันทึกคะแนน (เต็ม 15 คะแนน)</span>`;
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-form').reset();
+            document.getElementById('score-result-card').classList.add('hidden');
+            document.getElementById('quiz-form').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Screenshot / Download Image of Score Card
+        function downloadScoreImage() {
+            const captureEl = document.getElementById('capture-area');
+            html2canvas(captureEl, { scale: 2, backgroundColor: null }).then(canvas => {
+                const link = document.createElement('a');
+                const studentName = document.getElementById('res-name').textContent || 'student';
+                link.download = `คะแนน_อ30222_${studentName}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        // Custom Alert Modal
+        function showCustomModal(title, message) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+            const modal = document.getElementById('custom-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeCustomModal() {
+            const modal = document.getElementById('custom-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Teacher Modal Logic (Password: 198020)
+        function openTeacherModal() {
+            const modal = document.getElementById('teacher-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('teacher-password-input').focus();
+        }
+
+        function closeTeacherModal() {
+            const modal = document.getElementById('teacher-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function verifyTeacherPassword() {
+            const input = document.getElementById('teacher-password-input').value;
+            const errorMsg = document.getElementById('teacher-login-error');
+
+            if (input === '198020') {
+                errorMsg.classList.add('hidden');
+                document.getElementById('teacher-login-view').classList.add('hidden');
+                document.getElementById('teacher-dashboard-view').classList.remove('hidden');
+                window.renderStudentTable();
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function switchTeacherSubTab(subTab) {
+            if (subTab === 'scores') {
+                document.getElementById('t-view-scores').classList.remove('hidden');
+                document.getElementById('t-view-answers').classList.add('hidden');
+                document.getElementById('t-tab-scores').className = "px-4 py-2 rounded-xl text-sm font-bold bg-indigo-600 text-white";
+                document.getElementById('t-tab-answers').className = "px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
+            } else {
+                document.getElementById('t-view-scores').classList.add('hidden');
+                document.getElementById('t-view-answers').classList.remove('hidden');
+                document.getElementById('t-tab-answers').className = "px-4 py-2 rounded-xl text-sm font-bold bg-indigo-600 text-white";
+                document.getElementById('t-tab-scores').className = "px-4 py-2 rounded-xl text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200";
+            }
+        }
+    </script>
+</body>
+</html>
